@@ -11,4 +11,4 @@ def no_c(my_string):
 
     """
 
-    return(my_string.translate({ord('c'): None}))
+    return(my_string.translate({ord(i): None for i in 'cC'}))
