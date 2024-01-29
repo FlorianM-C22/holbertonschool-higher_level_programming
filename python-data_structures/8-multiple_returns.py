@@ -13,7 +13,7 @@ def multiple_returns(sentence):
 
     """
 
-    if sentence == None:
-        sentence[0] = None
+    if not sentence:
+        return (None, None)
     else:
         return (len(sentence), sentence[0])
