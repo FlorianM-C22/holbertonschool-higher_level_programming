@@ -10,6 +10,7 @@ def replace_in_list(my_list, idx, element):
 
     Returns:
     The new list with the replacement element
+        or
     The original list if idx is negative or out of range
 
     """
