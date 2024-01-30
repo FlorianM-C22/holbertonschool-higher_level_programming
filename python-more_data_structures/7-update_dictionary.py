@@ -13,7 +13,7 @@ def update_dictionary(a_dictionary, key, value):
 
     """
 
-    if value or key in a_dictionary.copy:
+    if value or key in a_dictionary:
         a_dictionary.update({key: value})
     else:
         a_dictionary.append({key: value})
