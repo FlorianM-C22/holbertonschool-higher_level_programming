@@ -13,5 +13,7 @@ def best_score(a_dictionary):
 
     """
 
-    sortedDic = sorted(a_dictionary)
-    print(sortedDic)
+    if a_dictionary:
+        return max(a_dictionary, key=a_dictionary.get)
+    else:
+        return None
