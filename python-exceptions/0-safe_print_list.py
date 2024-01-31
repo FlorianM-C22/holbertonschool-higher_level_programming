@@ -11,6 +11,7 @@ def safe_print_list(my_list=[], x=0):
     The real number of elements printed
 
     """
+
     try:
         count = 0
 
@@ -22,7 +23,7 @@ def safe_print_list(my_list=[], x=0):
                 break
 
     except TypeError:
-        print("Error: Non-printable element encountered!")
+        return(item)
 
     finally:
         print()
