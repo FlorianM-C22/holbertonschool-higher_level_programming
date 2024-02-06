@@ -1,0 +1,35 @@
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Test with valid inputs
+>>> say_my_name("John", "Doe")
+My name is John Doe
+
+>>> say_my_name("John")
+My name is John 
+
+# Test with non-string first_name
+
+>>> say_my_name(123, "Doe")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "3-say_my_name.py", line 16, in say_my_name
+    raise TypeError("first_name must be a string")
+TypeError: first_name must be a string
+
+# Test with non-string last_name
+
+>>> say_my_name("John", 123)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "3-say_my_name.py", line 18, in say_my_name
+    raise TypeError("last_name must be a string")
+TypeError: last_name must be a string
+
+# Test with both first_name and last_name as non-strings
+
+>>> say_my_name(123, 456)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "3-say_my_name.py", line 16, in say_my_name
+    raise TypeError("first_name must be a string")
+TypeError: first_name must be a string
