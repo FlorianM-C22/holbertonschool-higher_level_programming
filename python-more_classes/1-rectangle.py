@@ -28,8 +28,6 @@ class Rectangle:
         """
         Getter for the height of the rectangle.
 
-        Returns:
-            The height of the rectangle.
         """
         return self.__height
 
@@ -38,12 +36,6 @@ class Rectangle:
         """
         Setter for the height of the rectangle.
 
-        Args:
-            value (int): The height of the rectangle.
-
-        Raises:
-            TypeError: If the height is not an integer.
-            ValueError: If height is less than 0.
         """
         if not type(value) == int:
             raise TypeError("height must be an integer")
@@ -56,8 +48,6 @@ class Rectangle:
         """
         Getter for the width of the rectangle.
 
-        Returns:
-            The width of the rectangle.
         """
         return self.__width
 
@@ -66,12 +56,6 @@ class Rectangle:
         """
         Setter for the width of the rectangle.
 
-        Args:
-            value (int): The width of the rectangle.
-
-        Raises:
-            TypeError: If the width is not an integer.
-            ValueError: If width is less than 0.
         """
         if not type(value) == int:
             raise TypeError("width must be an integer")
