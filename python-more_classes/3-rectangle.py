@@ -88,7 +88,9 @@ class Rectangle:
         if self.__height == 0 or self.__width == 0:
             return ""
         else:
-            return "\n".join(["#" * self.__width for _ in range(self.__height)])
+            return "\n".join(
+                ["#" * self.__width for _ in range(self.__height)]
+            )
 
     def __str__(self):
         return self.print()
