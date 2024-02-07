@@ -92,3 +92,6 @@ class Rectangle:
 
     def __str__(self):
         return self.print()
+
+    def __repr__(self):
+        return "Rectangle({}, {})".format(self.__width, self.__height)
