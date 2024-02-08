@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+"""
+A class Rectangle that defines a rectangle
+width must be an integer, width need to be less than 0
+height must be an integer, height need to be less than 0
+"""
+
+
 class Rectangle:
     """
     A class that defines a rectangle.
@@ -10,7 +17,6 @@ class Rectangle:
     def __init__(self, width=0, height=0):
         """
         Initializes a rectangle.
-
         """
         if not type(height) == int:
             raise TypeError("height must be an integer")
@@ -28,7 +34,6 @@ class Rectangle:
     def height(self):
         """
         Getter for the height of the rectangle.
-
         """
         return self.__height
 
@@ -36,7 +41,6 @@ class Rectangle:
     def height(self, value):
         """
         Setter for the height of the rectangle.
-
         """
         if not type(value) == int:
             raise TypeError("height must be an integer")
@@ -48,7 +52,6 @@ class Rectangle:
     def width(self):
         """
         Getter for the width of the rectangle.
-
         """
         return self.__width
 
@@ -56,7 +59,6 @@ class Rectangle:
     def width(self, value):
         """
         Setter for the width of the rectangle.
-
         """
         if not type(value) == int:
             raise TypeError("width must be an integer")
@@ -67,14 +69,12 @@ class Rectangle:
     def area(self):
         """
         Returns the area of the rectangle.
-
         """
         return self.__width * self.__height
 
     def perimeter(self):
         """
         Returns the perimeter of the rectangle.
-
         """
         if self.__width == 0 or self.__height == 0:
             return 0
