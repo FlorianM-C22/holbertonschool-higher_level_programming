@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """
 Prints My name is <first name> <last name>.
-
-
+first_name must be strings
+last_name must be strings
 """
 
 
