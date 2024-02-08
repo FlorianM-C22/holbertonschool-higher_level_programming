@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""
-Divides all elements of a matrix.
-
-
-"""
+"""divides all elements of a matrix
+matrix must be a list of lists of integers or floats
+Each row of the matrix must be of the same size
+div must be a number (int or float), div can't be equal to 0
+Elements of matrix be divided by div, rounded to 2 decimal"""
 
 
 def matrix_divided(matrix, div):
