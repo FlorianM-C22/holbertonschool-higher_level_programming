@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""Module to indent a string
+"""
+
 
 def text_indentation(text):
     """
@@ -17,11 +20,9 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    # Replace the specified characters with themselves followed by a newline character
     for char in [".", "?", ":"]:
         text = text.replace(char, char + "\n")
 
-    # Split the text into lines and strip leading and trailing spaces from each line
     lines = text.split("\n")
     for i, line in enumerate(lines):
         print(line.strip(), end="")
