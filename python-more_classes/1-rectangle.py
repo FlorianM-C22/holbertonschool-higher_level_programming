@@ -7,11 +7,13 @@ A class that defines a rectangle.
 
 
 class Rectangle:
+    """
+    Define a rectangle.
+    """
 
     def __init__(self, width=0, height=0):
         """
         Initializes a rectangle.
-
         """
         if not type(height) == int:
             raise TypeError("height must be an integer")
@@ -29,7 +31,6 @@ class Rectangle:
     def height(self):
         """
         Getter for the height of the rectangle.
-
         """
         return self.__height
 
@@ -37,7 +38,6 @@ class Rectangle:
     def height(self, value):
         """
         Setter for the height of the rectangle.
-
         """
         if not type(value) == int:
             raise TypeError("height must be an integer")
@@ -49,7 +49,6 @@ class Rectangle:
     def width(self):
         """
         Getter for the width of the rectangle.
-
         """
         return self.__width
 
@@ -57,7 +56,6 @@ class Rectangle:
     def width(self, value):
         """
         Setter for the width of the rectangle.
-
         """
         if not type(value) == int:
             raise TypeError("width must be an integer")
