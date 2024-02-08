@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+"""
+A class Rectangle that defines a rectangle
+width must be an integer, width need to be less than 0
+height must be an integer, height need to be less than 0
+"""
+
+
 class Rectangle:
     """
     A class that defines a rectangle.

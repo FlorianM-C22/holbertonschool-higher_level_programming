@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 A class Rectangle that defines a rectangle
 width must be an integer, width need to be less than 0
