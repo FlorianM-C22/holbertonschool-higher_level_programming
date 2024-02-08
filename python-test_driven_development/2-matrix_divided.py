@@ -16,7 +16,6 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-
     new_matrix = []
     for row in matrix:
         if len(row) != len(matrix[0]):
