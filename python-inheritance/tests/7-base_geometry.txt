@@ -34,3 +34,30 @@ TypeError: my_var must be an integer
 Traceback (most recent call last):
 ...
 ValueError: my_var must be greater than 0
+
+# Test that integer_validator raises TypeError for boolean values
+>>> bg.integer_validator("my_var", True)
+Traceback (most recent call last):
+...
+TypeError: my_var must be an integer
+
+# Test that integer_validator raises TypeError for complex numbers
+>>> bg.integer_validator("my_var", 1+2j)
+Traceback (most recent call last):
+...
+TypeError: my_var must be an integer
+
+# Test that integer_validator raises ValueError for negative integer values
+>>> bg.integer_validator("my_var", -100)
+Traceback (most recent call last):
+...
+ValueError: my_var must be greater than 0
+
+# Test that integer_validator does not raise for large positive integer values
+>>> bg.integer_validator("my_var", 1000000)
+
+# Test that integer_validator raises ValueError for very large negative integer values
+>>> bg.integer_validator("my_var", -1000000)
+Traceback (most recent call last):
+...
+ValueError: my_var must be greater than 0
