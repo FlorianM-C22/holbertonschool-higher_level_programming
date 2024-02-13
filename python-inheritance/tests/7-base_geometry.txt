@@ -1,4 +1,4 @@
->>> BaseGeometry = __import__("base_geometry").BaseGeometry
+>>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
 
 >>> bg = BaseGeometry()
 
@@ -22,3 +22,15 @@ ValueError: my_var must be greater than 0
 
 # Test that integer_validator does not raise for positive integer values
 >>> bg.integer_validator("my_var", 1)
+
+# Test that integer_validator raises TypeError for float values
+>>> bg.integer_validator("my_var", 1.5)
+Traceback (most recent call last):
+...
+TypeError: my_var must be an integer
+
+# Test that integer_validator raises ValueError for zero
+>>> bg.integer_validator("my_var", 0)
+Traceback (most recent call last):
+...
+ValueError: my_var must be greater than 0
