@@ -4,10 +4,26 @@
 >>> my_list.print_sorted()
 [1, 2, 3]
 
->>> my_list = MyList(['c', 'b', 'a'])
+>>> my_list = MyList([5, 4, 3, 2, 1])
 >>> my_list.print_sorted()
-['a', 'b', 'c']
+[1, 2, 3, 4, 5]
+
+>>> my_list = MyList([1, 1, 1, 1, 1])
+>>> my_list.print_sorted()
+[1, 1, 1, 1, 1]
 
 >>> my_list = MyList([])
 >>> my_list.print_sorted()
 []
+
+>>> my_list = MyList(['c', 'b', 'a'])
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+...
+TypeError: type should be integer
+
+>>> my_list = MyList([3, 'b', 1])
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+...
+TypeError: type should be integer
