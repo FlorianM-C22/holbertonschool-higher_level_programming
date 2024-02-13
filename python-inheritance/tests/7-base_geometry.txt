@@ -5,19 +5,16 @@
 # Test that area method raises an exception
 >>> bg.area()
 Traceback (most recent call last):
-...
 Exception: area() is not implemented
 
 # Test that integer_validator raises TypeError for non-integer values
 >>> bg.integer_validator("my_var", "not an integer")
 Traceback (most recent call last):
-...
 TypeError: my_var must be an integer
 
 # Test that integer_validator raises ValueError for non-positive integer values
 >>> bg.integer_validator("my_var", -1)
 Traceback (most recent call last):
-...
 ValueError: my_var must be greater than 0
 
 # Test that integer_validator does not raise for positive integer values
@@ -26,31 +23,26 @@ ValueError: my_var must be greater than 0
 # Test that integer_validator raises TypeError for float values
 >>> bg.integer_validator("my_var", 1.5)
 Traceback (most recent call last):
-...
 TypeError: my_var must be an integer
 
 # Test that integer_validator raises ValueError for zero
 >>> bg.integer_validator("my_var", 0)
 Traceback (most recent call last):
-...
 ValueError: my_var must be greater than 0
 
 # Test that integer_validator raises TypeError for boolean values
 >>> bg.integer_validator("my_var", True)
 Traceback (most recent call last):
-...
 TypeError: my_var must be an integer
 
 # Test that integer_validator raises TypeError for complex numbers
 >>> bg.integer_validator("my_var", 1+2j)
 Traceback (most recent call last):
-...
 TypeError: my_var must be an integer
 
 # Test that integer_validator raises ValueError for negative integer values
 >>> bg.integer_validator("my_var", -100)
 Traceback (most recent call last):
-...
 ValueError: my_var must be greater than 0
 
 # Test that integer_validator does not raise for large positive integer values
@@ -59,5 +51,8 @@ ValueError: my_var must be greater than 0
 # Test that integer_validator raises ValueError for very large negative integer values
 >>> bg.integer_validator("my_var", -1000000)
 Traceback (most recent call last):
-...
 ValueError: my_var must be greater than 0
+
+>>> bg.area(7)
+Traceback (most recent call last):
+TypeError: area() takes 1 positional argument but 2 were given
