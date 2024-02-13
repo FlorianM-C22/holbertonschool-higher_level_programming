@@ -1,0 +1,24 @@
+>>> BaseGeometry = __import__("base_geometry").BaseGeometry
+
+>>> bg = BaseGeometry()
+
+# Test that area method raises an exception
+>>> bg.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
+# Test that integer_validator raises TypeError for non-integer values
+>>> bg.integer_validator("my_var", "not an integer")
+Traceback (most recent call last):
+...
+TypeError: my_var must be an integer
+
+# Test that integer_validator raises ValueError for non-positive integer values
+>>> bg.integer_validator("my_var", -1)
+Traceback (most recent call last):
+...
+ValueError: my_var must be greater than 0
+
+# Test that integer_validator does not raise for positive integer values
+>>> bg.integer_validator("my_var", 1)
