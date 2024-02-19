@@ -11,13 +11,6 @@ from models.base import Base
 class Rectangle(Base):
     """
     Rectangle class inherited from Base
-
-    Attributes:
-        width (int): The width of the rectangle.
-        height (int): The height of the rectangle.
-        x (int): The x-coordinate of the rectangle's position.
-        y (int): The y-coordinate of the rectangle's position.
-        id (int): The unique identifier of the rectangle.
     """
 
     @property
@@ -55,13 +48,6 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """
         Initialize the Rectangle model
-
-        Args:
-            width (int): The width of the rectangle.
-            height (int): The height of the rectangle.
-            x (int, optional): The x-coordinate of the rectangle's position.
-            y (int, optional): The y-coordinate of the rectangle's position.
-            id (int, optional): The unique identifier of the rectangle.
         """
         super().__init__(id)
         self.width = width
