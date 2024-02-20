@@ -6,8 +6,7 @@ Unittest for base.py
 """
 
 import unittest
-
-base = __import__('models.base').Base
+from models.base import Base as base
 
 
 class TestBase(unittest.TestCase):
@@ -75,3 +74,6 @@ class TestBase(unittest.TestCase):
         b1 = base()
         b2 = b1.create()
         self.assertEqual(b2.id)
+
+    if __name__ == '__main__':
+        unittest.main()
