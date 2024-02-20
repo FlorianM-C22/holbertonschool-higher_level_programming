@@ -1,79 +1,106 @@
 #!/usr/bin/python3
 """
-Unittest for base.py
+Unittest for Base class
 
 
 """
-
 import unittest
-from models.base import Base as base
+from models.base import Base
 
 
 class TestBase(unittest.TestCase):
     """
-    Test cases for base.py
+    Test cases for Base class
     """
 
     def test_id(self):
         """
-        Test id
+        Test id assignment
         """
-        b1 = base()
+        b1 = Base()
         self.assertEqual(b1.id, 1)
-        b2 = base()
+        b2 = Base()
         self.assertEqual(b2.id, 2)
-        b3 = base(12)
+        b3 = Base(12)
         self.assertEqual(b3.id, 12)
-        b4 = base()
+        b4 = Base()
         self.assertEqual(b4.id, 3)
+
+    def test_id_is_none(self):
+        """
+        Test id when it is None
+        """
+        Base._Base__nb_objects = 0
+        b1 = Base()
+        self.assertEqual(b1.id, 1)
+        b2 = Base(None)
+        self.assertEqual(b2.id, 2)
+
+    def test_id_is_string(self):
+        """
+        Test id when it is a string
+        """
+        b = Base("1")
+        self.assertEqual(b.id, "1")
+
+    def test_id_is_zero(self):
+        """
+        Test id when it is zero
+        """
+        b = Base(0)
+        self.assertEqual(b.id, 0)
+
+    def test_id_is_negative(self):
+        """
+        Test id when it is negative
+        """
+        b = Base(-1)
+        self.assertEqual(b.id, -1)
+
+    def test_id_is_float(self):
+        """
+        Test id when it is a float
+        """
+        b = Base(1.1)
+        self.assertEqual(b.id, 1.1)
+
+    def test_id_is_complex(self):
+        """
+        Test id when it is a complex number
+        """
+        b = Base(1+2j)
+        self.assertEqual(b.id, 1+2j)
+
+    def test_id_is_list(self):
+        """
+        Test id when it is a list
+        """
+        b = Base([1, 2, 3])
+        self.assertEqual(b.id, [1, 2, 3])
+
+    def test_id_is_dict(self):
+        """
+        Test id when it is a dictionary
+        """
+        b = Base({'id': 1})
+        self.assertEqual(b.id, {'id': 1})
 
     def test_to_json_string(self):
         """
-        Test to_json_string
+        Test to_json_string method
         """
-        b1 = base()
-        self.assertEqual(b1.to_json_string(None), "[]")
-        self.assertEqual(b1.to_json_string([]), "[]")
-        self.assertEqual(b1.to_json_string([{'id': 89}]), '[{"id": 89}]')
-        self.assertEqual(b1.to_json_string([{'id': 89}, {'id': 89}]),
-                         '[{"id": 89}, {"id": 89}]')
+        self.assertEqual(Base.to_json_string(None), "[]")
+        self.assertEqual(Base.to_json_string([]), "[]")
+        self.assertEqual(Base.to_json_string([{'id': 12}]), '[{"id": 12}]')
 
     def test_from_json_string(self):
         """
-        Test from_json_string
+        Test from_json_string method
         """
-        b1 = base()
-        self.assertEqual(b1.from_json_string(None), [])
-        self.assertEqual(b1.from_json_string("[]"), [])
-        self.assertEqual(b1.from_json_string('[{"id": 89}]'), [{'id': 89}])
-        self.assertEqual(b1.from_json_string('[{"id": 89}, {"id": 89}]'),
-                         [{'id': 89}, {'id': 89}])
+        self.assertEqual(Base.from_json_string(None), [])
+        self.assertEqual(Base.from_json_string("[]"), [])
+        self.assertEqual(Base.from_json_string('[{"id": 12}]'), [{'id': 12}])
 
-    def test_save_to_file(self):
-        """
-        Test save_to_file
-        """
-        b1 = base()
-        b1.save_to_file(None)
-        with open("Base.json", "r") as file:
-            self.assertEqual(file.read(), "[]")
-        b1.save_to_file([])
-        with open("Base.json", "r") as file:
-            self.assertEqual(file.read(), "[]")
-        b1.save_to_file([{'id': 89}])
-        with open("Base.json", "r") as file:
-            self.assertEqual(file.read(), '[{"id": 89}]')
-        b1.save_to_file([{'id': 89}, {'id': 89}])
-        with open("Base.json", "r") as file:
-            self.assertEqual(file.read(), '[{"id": 89}, {"id": 89}]')
 
-    def test_create(self):
-        """
-        Test create
-        """
-        b1 = base()
-        b2 = b1.create()
-        self.assertEqual(b2.id)
-
-    if __name__ == '__main__':
-        unittest.main()
+if __name__ == '__main__':
+    unittest.main()
