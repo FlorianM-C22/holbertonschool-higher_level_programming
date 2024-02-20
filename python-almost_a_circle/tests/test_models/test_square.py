@@ -1,83 +1,81 @@
 #!/usr/bin/python3
 """
-Unittest for square.py
-
-
+Unittest for Square class
 """
-
 import unittest
-from models.square import Square as square
+from models.square import Square
 
 
 class TestSquare(unittest.TestCase):
     """
-    Test cases for square.py
+    Test cases for Square class
     """
 
-    def test_id(self):
+    def test_constructor(self):
         """
-        Test id
+        Test the constructor of Square class
         """
-        s1 = square()
-        self.assertEqual(s1.id, 1)
-        s2 = square()
-        self.assertEqual(s2.id, 2)
-        s3 = square(12)
-        self.assertEqual(s3.id, 12)
-        s4 = square()
-        self.assertEqual(s4.id, 3)
+        s1 = Square(5)
+        self.assertEqual(s1.size, 5)
+        self.assertEqual(s1.x, 0)
+        self.assertEqual(s1.y, 0)
+        self.assertIsNotNone(s1.id)
 
-    def test_to_json_string(self):
-        """
-        Test to_json_string
-        """
-        s1 = square()
-        self.assertEqual(s1.to_json_string(None), "[]")
-        self.assertEqual(s1.to_json_string([]), "[]")
-        self.assertEqual(s1.to_json_string([{'id': 89}]), '[{"id": 89}]')
-        self.assertEqual(s1.to_json_string([{'id': 89}, {'id': 89}]),
-                         '[{"id": 89}, {"id": 89}]')
+        s2 = Square(10, 2, 3, 1)
+        self.assertEqual(s2.size, 10)
+        self.assertEqual(s2.x, 2)
+        self.assertEqual(s2.y, 3)
+        self.assertEqual(s2.id, 1)
 
-    def test_from_json_string(self):
+    def test_str(self):
         """
-        Test from_json_string
+        Test the __str__ method of Square class
         """
-        s1 = square()
-        self.assertEqual(s1.from_json_string(None), [])
-        self.assertEqual(s1.from_json_string("[]"), [])
-        self.assertEqual(s1.from_json_string('[{"id": 89}]'), [{'id': 89}])
-        self.assertEqual(s1.from_json_string('[{"id": 89}, {"id": 89}]'),
-                         [{'id': 89}, {'id': 89}])
+        s = Square(5, 2, 3, 1)
+        self.assertEqual(str(s), "[Square] (1) 2/3 - 5")
 
-    def test_save_to_file(self):
+    def test_size_getter_setter(self):
         """
-        Test save_to_file
+        Test the size getter and setter of Square class
         """
-        s1 = square()
-        s1.save_to_file(None)
-        with open("Square.json", "r") as file:
-            self.assertEqual(file.read(), "[]")
+        s = Square(5)
+        self.assertEqual(s.size, 5)
 
-    def test_create(self):
-        """
-        Test create
-        """
-        s1 = square()
-        s1_dict = s1.to_dictionary()
-        s2 = square.create(**s1_dict)
-        self.assertEqual(s1 is s2, False)
-        self.assertEqual(s1 == s2, False)
-        self.assertEqual(s1.to_dictionary() == s2.to_dictionary(), True)
+        s.size = 10
+        self.assertEqual(s.size, 10)
+        self.assertEqual(s.width, 10)
+        self.assertEqual(s.height, 10)
 
-    def test_load_from_file(self):
+    def test_update_args(self):
         """
-        Test load_from_file
+        Test the update method of Square class with *args
         """
-        s1 = square()
-        s1.save_to_file(None)
-        s2 = square.load_from_file()
-        self.assertEqual(s1 is s2, False)
-        self.assertEqual(s1 == s2, False)
+        s = Square(5)
+        s.update(1, 10, 2, 3)
+        self.assertEqual(s.id, 1)
+        self.assertEqual(s.size, 10)
+        self.assertEqual(s.x, 2)
+        self.assertEqual(s.y, 3)
 
-    if __name__ == '__main__':
-        unittest.main()
+    def test_update_kwargs(self):
+        """
+        Test the update method of Square class with **kwargs
+        """
+        s = Square(5)
+        s.update(id=1, size=10, x=2, y=3)
+        self.assertEqual(s.id, 1)
+        self.assertEqual(s.size, 10)
+        self.assertEqual(s.x, 2)
+        self.assertEqual(s.y, 3)
+
+    def test_to_dictionary(self):
+        """
+        Test the to_dictionary method of Square class
+        """
+        s = Square(5, 2, 3, 1)
+        d = s.to_dictionary()
+        self.assertEqual(d, {"id": 1, "x": 2, "size": 5, "y": 3})
+
+
+if __name__ == '__main__':
+    unittest.main()
