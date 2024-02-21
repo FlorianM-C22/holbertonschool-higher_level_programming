@@ -13,6 +13,16 @@ class TestRectangle(unittest.TestCase):
     """
     Test cases for rectangle.py
     """
+    def test_construtor(self):
+        """
+        Test the constructor of Rectangle class
+        """
+        r = rectangle(5, 10, 1, 2, 3)
+        self.assertEqual(r.width, 5)
+        self.assertEqual(r.height, 10)
+        self.assertEqual(r.x, 1)
+        self.assertEqual(r.y, 2)
+        self.assertEqual(r.id, 3)
 
     def test_id(self):
         """
