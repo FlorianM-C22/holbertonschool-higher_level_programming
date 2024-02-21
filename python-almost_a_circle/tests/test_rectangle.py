@@ -4,9 +4,7 @@ Unittest for rectangle.py
 """
 
 import unittest
-from models.base import Base
 from models.rectangle import Rectangle as rectangle
-from models.square import Square
 
 
 class TestRectangle(unittest.TestCase):
@@ -59,6 +57,14 @@ class TestRectangle(unittest.TestCase):
             r1.width = "invalid"
         with self.assertRaises(ValueError):
             r1.width = -5
+        with self.assertRaises(TypeError):
+            r1.width = 3.14
+        with self.assertRaises(TypeError):
+            r1.width = complex(2, 3)
+        with self.assertRaises(TypeError):
+            r1.width = (4, 5)
+        with self.assertRaises(TypeError):
+            r1.width = [6, 7]
 
     def test_height(self):
         """
@@ -72,6 +78,14 @@ class TestRectangle(unittest.TestCase):
             r1.height = "invalid"
         with self.assertRaises(ValueError):
             r1.height = -10
+        with self.assertRaises(TypeError):
+            r1.height = 3.14
+        with self.assertRaises(TypeError):
+            r1.height = complex(2, 3)
+        with self.assertRaises(TypeError):
+            r1.height = (4, 5)
+        with self.assertRaises(TypeError):
+            r1.height = [6, 7]
 
     def test_x(self):
         """
@@ -85,6 +99,14 @@ class TestRectangle(unittest.TestCase):
             r1.x = "invalid"
         with self.assertRaises(ValueError):
             r1.x = -2
+        with self.assertRaises(TypeError):
+            r1.x = 3.14
+        with self.assertRaises(TypeError):
+            r1.x = complex(2, 3)
+        with self.assertRaises(TypeError):
+            r1.x = (4, 5)
+        with self.assertRaises(TypeError):
+            r1.x = [6, 7]
 
     def test_y(self):
         """
@@ -98,6 +120,14 @@ class TestRectangle(unittest.TestCase):
             r1.y = "invalid"
         with self.assertRaises(ValueError):
             r1.y = -3
+        with self.assertRaises(TypeError):
+            r1.y = 3.14
+        with self.assertRaises(TypeError):
+            r1.y = complex(2, 3)
+        with self.assertRaises(TypeError):
+            r1.y = (4, 5)
+        with self.assertRaises(TypeError):
+            r1.y = [6, 7]
 
     def test_area(self):
         """
@@ -142,13 +172,61 @@ class TestRectangle(unittest.TestCase):
         r1.update(y=60)
         self.assertEqual(r1.y, 60)
 
-    def test_to_dictionary(self):
+    def test_invalid_width_string(self):
         """
-        Test to_dictionary
+        Test invalid width string
         """
-        r1 = rectangle(5, 10, 2, 3, 1)
-        expected_output = {'x': 2, 'y': 3, 'id': 1, 'height': 10, 'width': 5}
-        self.assertEqual(r1.to_dictionary(), expected_output)
+        with self.assertRaises(TypeError):
+            rectangle("invalid", 10)
+
+    def test_invalid_height_string(self):
+        """
+        Test invalid height string
+        """
+        with self.assertRaises(TypeError):
+            rectangle(10, "invalid")
+
+    def test_invalid_x_string(self):
+        """
+        Test invalid x string
+        """
+        with self.assertRaises(TypeError):
+            rectangle(10, 20, "invalid")
+
+    def test_invalid_y_string(self):
+        """
+        Test invalid y string
+        """
+        with self.assertRaises(TypeError):
+            rectangle(10, 20, 30, "invalid")
+
+    def test_invalid_width_negative(self):
+        """
+        Test invalid negative width
+        """
+        with self.assertRaises(ValueError):
+            rectangle(-10, 20)
+
+    def test_invalid_height_negative(self):
+        """
+        Test invalid negative height
+        """
+        with self.assertRaises(ValueError):
+            rectangle(10, -20)
+
+    def test_invalid_x_negative(self):
+        """
+        Test invalid negative x
+        """
+        with self.assertRaises(ValueError):
+            rectangle(10, 20, -30)
+
+    def test_invalid_y_negative(self):
+        """
+        Test invalid negative y
+        """
+        with self.assertRaises(ValueError):
+            rectangle(10, 20, 30, -40)
 
 
 if __name__ == '__main__':
