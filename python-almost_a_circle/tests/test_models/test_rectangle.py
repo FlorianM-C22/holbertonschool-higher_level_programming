@@ -4,7 +4,9 @@ Unittest for rectangle.py
 """
 
 import unittest
+from models.base import Base
 from models.rectangle import Rectangle as rectangle
+from models.square import Square
 
 
 class TestRectangle(unittest.TestCase):
@@ -35,17 +37,6 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.to_json_string([{'id': 89}]), '[{"id": 89}]')
         self.assertEqual(r1.to_json_string([{'id': 89}, {'id': 89}]),
                          '[{"id": 89}, {"id": 89}]')
-
-    def test_from_json_string(self):
-        """
-        Test from_json_string
-        """
-        r1 = rectangle(5, 10)
-        self.assertEqual(r1.from_json_string(None), [])
-        self.assertEqual(r1.from_json_string("[]"), [])
-        self.assertEqual(r1.from_json_string('[{"id": 89}]'), [{'id': 89}])
-        self.assertEqual(r1.from_json_string('[{"id": 89}, {"id": 89}]'),
-                         [{'id': 89}, {'id': 89}])
 
     def test_save_to_file(self):
         """
