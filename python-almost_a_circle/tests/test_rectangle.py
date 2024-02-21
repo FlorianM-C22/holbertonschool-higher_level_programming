@@ -38,7 +38,7 @@ class TestRectangle(unittest.TestCase):
         r4 = Rectangle(5, 10, id=3)
         self.assertEqual(r4.id, 3)
 
-    def test_setUp(self):
+    def setUp(self):
         """
         Setting up an instance
         """
