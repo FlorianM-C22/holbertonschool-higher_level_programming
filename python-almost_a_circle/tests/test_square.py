@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 """
-Unittest for Square class
+Unittest for rectangle.py
 
 
 """
 
-
 import unittest
-from models.square import Square
+from models.square import Square as Square
 
 
 class TestSquare(unittest.TestCase):
@@ -79,6 +78,52 @@ class TestSquare(unittest.TestCase):
         s = Square(5, 2, 3, 1)
         d = s.to_dictionary()
         self.assertEqual(d, {"id": 1, "x": 2, "size": 5, "y": 3})
+
+    def test_negative_size(self):
+        """
+        Test creating a Square with a negative size
+        """
+        with self.assertRaises(ValueError):
+            Square(-5)
+
+    def test_zero_size(self):
+        """
+        Test creating a Square with a size of zero
+        """
+        with self.assertRaises(ValueError):
+            Square(0)
+
+    def test_negative_coordinates(self):
+        """
+        Test creating a Square with negative coordinates
+        """
+        with self.assertRaises(ValueError):
+            Square(5, -2, -3)
+
+    def test_update_invalid_args(self):
+        """
+        Test the update method of Square class with invalid *args
+        """
+        s = Square(5)
+        s.update(1, 10, 2, 3, 4)
+
+    def test_update_invalid_kwargs(self):
+        """
+        Test the update method of Square class with invalid **kwargs
+        """
+        s = Square(5)
+        s.update(id=1, size=10, x=2, y=3, z=4)
+
+    def test_to_dictionary_empty(self):
+        """
+        Test the to_dictionary method of Square class with an empty Square
+        """
+        s = Square(1)
+        d = s.to_dictionary()
+        self.assertIn('id', d)
+        self.assertEqual(d['size'], 1)
+        self.assertEqual(d['x'], 0)
+        self.assertEqual(d['y'], 0)
 
 
 if __name__ == '__main__':
