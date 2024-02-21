@@ -8,10 +8,7 @@ Unittest for Base class
 
 import unittest
 import os
-import json
 from models.base import Base
-from models.rectangle import Rectangle as Rectangle
-from models.square import Square as Square
 
 
 class TestBase(unittest.TestCase):
