@@ -1,73 +1,44 @@
 #!/usr/bin/python3
-"""
-Square model inherited from Rectangle
-
-
-"""
-
+"""Class Square"""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """
-    Square class inherited from Base
-    """
-
+    """Class Square inherit of Rectangle"""
     def __init__(self, size, x=0, y=0, id=None):
-        """
-        Constructor of the Square class
-        """
         super().__init__(size, size, x, y, id)
-
-    def __str__(self):
-        """
-        String representation of the Square class
-        """
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x,
-                                                 self.y, self.width)
 
     @property
     def size(self):
-        """
-        Getter of the size attribute
-        """
         return self.width
 
     @size.setter
     def size(self, value):
-        """
-        Setter of the size attribute
-        """
+        if not type(value) is int:
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
         self.width = value
         self.height = value
 
+    def __str__(self):
+        """return a strings for print"""
+        return "[Square] ({:d}) {:d}/{:d} - {:d}".format(
+            self.id, self.x, self.y, self.width)
+
     def update(self, *args, **kwargs):
-        """
-        Update the attributes of the Square class
-        """
+        """Definition update with variadic function"""
         if args:
-            for i, arg in enumerate(args):
-                if i == 0:
-                    self.id = arg
-                elif i == 1:
-                    self.size = arg
-                elif i == 2:
-                    self.x = arg
-                elif i == 3:
-                    self.y = arg
+            i = 0
+            listme = ['id', 'size', 'x', 'y']
+            for arg in args:
+                setattr(self, listme[i], arg)
+                i += 1
+            return
         else:
             for key, value in kwargs.items():
-                if key == "id":
-                    self.id = value
-                elif key == "size":
-                    self.size = value
-                elif key == "x":
-                    self.x = value
-                elif key == "y":
-                    self.y = value
+                setattr(self, key, value)
 
     def to_dictionary(self):
-        """
-        Dictionary representation of the Square class
-        """
-        return {"id": self.id, "x": self.x, "size": self.size,  "y": self.y}
+        """returns a dictionary of Square"""
+        return {'id': self.id, 'x': self.x, 'size': self.size, 'y': self.y}
