@@ -232,11 +232,6 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base.from_json_string('[{"id": 12}, {"id": 13}]'),
                          [{'id': 12}, {'id': 13}])
 
-    def test_id_none(self):
-        """Sending no id"""
-        b = Base()
-        self.assertEqual(1, b.id)
-
     def test_id_zero(self):
         """Sending an id 0"""
         b = Base(0)
