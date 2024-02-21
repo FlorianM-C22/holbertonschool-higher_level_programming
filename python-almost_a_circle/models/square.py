@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""Class Square"""
+"""
+Class Square inherited from Rectangle
+
+
+"""
 from models.rectangle import Rectangle
 
 

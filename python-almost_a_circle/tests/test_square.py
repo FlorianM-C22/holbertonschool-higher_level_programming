@@ -1,9 +1,14 @@
 #!/usr/bin/python3
+"""
+Runs test cases for the square module
+
+
+"""
+
 import unittest, os, sys, json
 from models.square import Square
 from models.base import Base
 from io import StringIO
-"""Runs test cases for the square module"""
 
 
 class test_square(unittest.TestCase):

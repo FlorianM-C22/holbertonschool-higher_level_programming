@@ -9,7 +9,6 @@ import unittest, json
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
-"""Creating test cases for the base module"""
 
 
 class test_base(unittest.TestCase):
