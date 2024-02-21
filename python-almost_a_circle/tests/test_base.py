@@ -7,9 +7,11 @@ Unittest for Base class
 
 
 import unittest
+import os
+import json
 from models.base import Base
-from models.rectangle import Rectangle as rectangle
-from models.square import Square
+from models.rectangle import Rectangle as Rectangle
+from models.square import Square as Square
 
 
 class TestBase(unittest.TestCase):
@@ -60,6 +62,13 @@ class TestBase(unittest.TestCase):
         """
         b = Base(-1)
         self.assertEqual(b.id, -1)
+
+    def test_id_is_boolean(self):
+        """
+        Test id when it is a boolean
+        """
+        b = Base(True)
+        self.assertEqual(b.id, True)
 
     def test_id_is_float(self):
         """
@@ -124,6 +133,22 @@ class TestBase(unittest.TestCase):
         Base.save_to_file(None)
         with open("Base.json", "r") as f:
             self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_empty(self):
+        """
+        Test save_to_file when list_objs is None
+        """
+        Base.save_to_file(None)
+        with open("Base.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+        os.remove("Base.json")
+
+    def test_save_to_file_with_non_base_objects(self):
+        """
+        Test save_to_file with non-Base objects in list_objs
+        """
+        with self.assertRaises(AttributeError):
+            Base.save_to_file([1, "string", 3.14, True])
 
     def test_save_to_file_empty_list(self):
         """

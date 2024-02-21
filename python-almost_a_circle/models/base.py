@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """
 Base model for all other models to inherit
+
+
 """
 
 import json
