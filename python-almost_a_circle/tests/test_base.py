@@ -210,6 +210,20 @@ class TestBase(unittest.TestCase):
         self.assertEqual(square.x, 3)
         self.assertEqual(square.y, 4)
 
+    def test_to_json_string_multiple_dictionaries(self):
+        """
+        Test to_json_string method with multiple dictionaries
+        """
+        self.assertEqual(Base.to_json_string(
+            [{'id': 12}, {'id': 13}]), '[{"id": 12}, {"id": 13}]')
+
+    def test_from_json_string_multiple_dictionaries(self):
+        """
+        Test from_json_string method with multiple dictionaries
+        """
+        self.assertEqual(Base.from_json_string('[{"id": 12}, {"id": 13}]'),
+                         [{'id': 12}, {'id': 13}])
+
 
 if __name__ == '__main__':
     unittest.main()
