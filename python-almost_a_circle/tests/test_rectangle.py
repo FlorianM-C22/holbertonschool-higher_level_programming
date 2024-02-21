@@ -38,11 +38,17 @@ class TestRectangle(unittest.TestCase):
         r4 = Rectangle(5, 10, id=3)
         self.assertEqual(r4.id, 3)
 
+    def test_setUp(self):
+        """
+        Setting up an instance
+        """
+        self.r1 = Rectangle(10, 2)
+
     def test_delete(self):
         """
         Deleting created instance
         """
-        del self.r
+        del self.r1
 
     def test_rectangle_inherits_from_base(self):
         """
