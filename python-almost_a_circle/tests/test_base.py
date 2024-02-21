@@ -9,6 +9,8 @@ Unittest for Base class
 import unittest
 import os
 from models.base import Base
+from models.rectangle import Rectangle as Rectangle
+from models.square import Square as Square
 
 
 class TestBase(unittest.TestCase):
@@ -21,13 +23,13 @@ class TestBase(unittest.TestCase):
         Test id assignment
         """
         b1 = Base()
-        self.assertEqual(b1.id, 1)
+        self.assertEqual(b1.id, 3)
         b2 = Base()
-        self.assertEqual(b2.id, 2)
+        self.assertEqual(b2.id, 4)
         b3 = Base(12)
         self.assertEqual(b3.id, 12)
         b4 = Base()
-        self.assertEqual(b4.id, 3)
+        self.assertEqual(b4.id, 5)
 
     def test_id_is_none(self):
         """
@@ -167,6 +169,12 @@ class TestBase(unittest.TestCase):
         """
         self.assertEqual(Base.from_json_string(""), [])
 
+    def test_to_json_string_empty_string(self):
+        """
+        Test to_json_string method with an empty string
+        """
+        self.assertEqual(Base.to_json_string(""), '""')
+
     def test_from_json_string_single_dictionary(self):
         """
         Test from_json_string method with a single dictionary as input
@@ -178,6 +186,29 @@ class TestBase(unittest.TestCase):
         Test load_from_file method with None as input
         """
         self.assertEqual(Base.load_from_file(), [])
+
+    def test_create_rectangle(self):
+        """
+        Test create method with a dictionary of attributes for a Rectangle
+        """
+        rectangle = Rectangle.create(id=1, width=2, height=3, x=4, y=5)
+        self.assertIsInstance(rectangle, Rectangle)
+        self.assertEqual(rectangle.id, 1)
+        self.assertEqual(rectangle.width, 2)
+        self.assertEqual(rectangle.height, 3)
+        self.assertEqual(rectangle.x, 4)
+        self.assertEqual(rectangle.y, 5)
+
+    def test_create_square(self):
+        """
+        Test create method with a dictionary of attributes for a Square
+        """
+        square = Square.create(id=1, size=2, x=3, y=4)
+        self.assertIsInstance(square, Square)
+        self.assertEqual(square.id, 1)
+        self.assertEqual(square.size, 2)
+        self.assertEqual(square.x, 3)
+        self.assertEqual(square.y, 4)
 
 
 if __name__ == '__main__':
