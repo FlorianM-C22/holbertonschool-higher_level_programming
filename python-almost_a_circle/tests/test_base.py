@@ -97,6 +97,13 @@ class TestBase(unittest.TestCase):
         b = Base({'id': 1})
         self.assertEqual(b.id, {'id': 1})
 
+    def test_id_tuple(self):
+        """
+        Test id when it is a tuple
+        """
+        b = Base((8,))
+        self.assertEqual((8,), b.id)
+
     def test_to_json_string(self):
         """
         Test to_json_string method
