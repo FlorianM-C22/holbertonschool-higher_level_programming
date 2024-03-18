@@ -1,8 +1,3 @@
--- Connect to the MySQL server
-mysql -u root -p
--- List privileges for user_0d_1
+-- lists all privileges of the MySQL users user_0d_1 and user_0d_2 on your server
 SHOW GRANTS FOR 'user_0d_1'@'localhost';
--- List privileges for user_0d_2
 SHOW GRANTS FOR 'user_0d_2'@'localhost';
--- Exit the MySQL server
-exit
