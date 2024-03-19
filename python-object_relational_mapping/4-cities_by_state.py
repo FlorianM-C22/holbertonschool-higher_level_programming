@@ -13,6 +13,7 @@ if __name__ == "__main__":
 
     cursor.execute(query, (argv[4],))
     rows = cursor.fetchall()
-    print(", ".join([row[0] for row in rows]))
+    for row in rows:
+        print(row)
     cursor.close()
     db.close()
