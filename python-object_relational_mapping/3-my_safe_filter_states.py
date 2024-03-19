@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""Eviter les injections SQL"""
+
 import MySQLdb
 from sys import argv
 
