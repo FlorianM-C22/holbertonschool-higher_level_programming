@@ -1,24 +1,20 @@
-#!/usr/bin/python3
-"""
-Takes in an argument and displays all values in the states table
-of hbtn_0e_0_usa where name matches the argument.
-
-"""
-
 import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", port=3306,
-                         user=argv[1], passwd=argv[2], db=argv[3])
+    connexion = MySQLdb.connect(
+        host="localhost", port=3306, user=argv[1], passwd=argv[2], db=argv[3]
+    )
+    'Sélectionne le texte qui précède le point-virgule (si existe)'
+    'dans argv[4] pour éviter les injections SQL.'
     argv_4 = argv[4].split(';')[0]
-    cursor = db.cursor()
-    cursor.execute("""SELECT * FROM states
+
+    curs = connexion.cursor()
+    curs.execute("""SELECT * FROM states
                  WHERE BINARY name LIKE '{}%'
                  ORDER BY id;""".format(argv_4))
-    rows = cursor.fetchall()
+    rows = curs.fetchall()
     for row in rows:
-        if row[1] == argv[4]:
-            print(row)
-    cursor.close()
-    db.close()
+        print(row)
+    curs.close()
+    connexion.close()
