@@ -11,11 +11,14 @@ from sys import argv
 if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", port=3306,
                          user=argv[1], passwd=argv[2], db=argv[3])
+    argv_4 = argv[4].split(';')[0]
     cursor = db.cursor()
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cursor.execute(query, (argv[4],))
+    cursor.execute("""SELECT * FROM states
+                 WHERE BINARY name LIKE '{}%'
+                 ORDER BY id;""".format(argv_4))
     rows = cursor.fetchall()
     for row in rows:
-        print(row)
+        if row[1] == argv[4]:
+            print(row)
     cursor.close()
     db.close()
